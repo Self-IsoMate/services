@@ -31,17 +31,17 @@
                   <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="fa fa-unlock fa-lg"></i></span>
-                          <input id="pass1" name="pass1" placeholder="New Password" class="form-control"  type="password" onkeyup='check();'><!--pass1-->
+                          <input id="pass1" name="pass1" placeholder="New Password" class="form-control"  type="password"><!--pass1-->
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="fa fa-unlock fa-lg"></i></span>
-                          <input id="pass2" name="pass2" placeholder="Confirm new password" class="form-control"  type="password" onkeyup='check();'><!--pass1-->
+                          <input id="pass2" name="pass2" placeholder="Confirm new password" class="form-control"  type="password"><!--pass1-->
                         </div>
                       </div>
                       <div class="form-group">
-                        <input name="submit" class="btn btn-lg btn-primary btn-block" value="Reset Password"> <!--type="submit"-->
+                        <input name="submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" onclick='check();'> <!--type="submit"-->
                         <span id='message'></span>
 
                       </div>
