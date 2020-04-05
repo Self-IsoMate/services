@@ -54,30 +54,71 @@
 	</div>
 <script>
  var check = function() {
+  emailVar = "<?php echo (isset($_GET['email']));?>";
+  tokenVar = "<?php echo (isset($_GET['token']));?>";
+  if(emailVar=="1"&&tokenVar=="1"){
       if (document.getElementById('pass1').value ==
           document.getElementById('pass2').value) {
           document.getElementById('message').style.color = 'green';
-          document.getElementById('message').innerHTML = 'matching';
           const toSend = {
       
       email: "<?php echo $_GET['email']; ?>",
       token: "<?php echo $_GET['token']; ?>",
-      password:"pass123"
+      password:document.getElementById('pass1').value
 
     };
 
     const jsonString = JSON.stringify(toSend);
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://self-isomate-api.appspot.com/api/resetpassword");
-    xhr.setRequestHeader("Content-Type", "application/json");
+
+    var xhr = createCORSRequest("POST", "https://self-isomate-api.appspot.com/api/resetpassword");
+      if (!xhr) {
+        throw new Error('CORS not supported');
+      }
     xhr.send(jsonString);
+    document.getElementById('message').innerHTML = 'Success! You can close the page now';
+
       } else {
       		document.getElementById('message').style.color = 'red';
-          document.getElementById('message').innerHTML = 'not matching';
+          document.getElementById('message').innerHTML = 'Passwords not matching';
       }
+  }else{
+          document.getElementById('message').style.color = 'red';
+          document.getElementById('message').innerHTML = 'Access not authorized ';
+
+  }
   }
 
-    
+
+
+
+  function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
+
+
+
+
 
 </script>
 </body>
