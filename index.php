@@ -68,7 +68,7 @@
 
     const jsonString = JSON.stringify(toSend);
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://self-isomate-api.appspot.com/api/resetpassword");
+    xhr.open("POST", "https://self-isomate-api.appspot.com/api/resetpassword");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(jsonString);
       } else {
