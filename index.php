@@ -62,9 +62,9 @@
           document.getElementById('message').style.color = 'green';
           const toSend = {
       
-      "email": "<?php echo $_GET['email']; ?>",
-      "token": "<?php echo $_GET['token']; ?>",
-      "password":document.getElementById('pass1').value
+      email: "<?php echo $_GET['email']; ?>",
+      token: "<?php echo $_GET['token']; ?>",
+      password:document.getElementById('pass1').value
 
     };
     
