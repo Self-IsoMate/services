@@ -300,8 +300,8 @@
   tokenVar = "<?php echo (isset($_GET['token']));?>";
 
   if(emailVar=="1"&&tokenVar=="1"){
-    if (document.getElementById('pass1').trim().length < "5" ||
-          document.getElementById('pass2').trim().length< "5") {	document.getElementById('message').style.color = 'red';
+    if (document.getElementById('pass1').value.trim().length < "5" ||
+          document.getElementById('pass2').value.trim().length< "5") {	document.getElementById('message').style.color = 'red';
           document.getElementById('message').innerHTML = 'Passwords must be longer and not empty';}
 
       else if (document.getElementById('pass1').value ==
