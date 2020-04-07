@@ -218,7 +218,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input name="submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" onclick='check();'> <!--type="submit"-->
+                        <input name="submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" onclick='checkData()'> 
                         <span id='message'></span>
 
                       </div>
@@ -289,12 +289,22 @@
   </body>
 
 
-<script>
- var check = function() {
+  <script type="text/javascript">
+
+
+
+    function checkData() {
+      
+
   emailVar = "<?php echo (isset($_GET['email']));?>";
   tokenVar = "<?php echo (isset($_GET['token']));?>";
+
   if(emailVar=="1"&&tokenVar=="1"){
-      if (document.getElementById('pass1').value ==
+    if (document.getElementById('pass1').trim().length < "5" ||
+          document.getElementById('pass2').trim().length< "5") {	document.getElementById('message').style.color = 'red';
+          document.getElementById('message').innerHTML = 'Passwords must be longer and not empty';}
+
+      else if (document.getElementById('pass1').value ==
           document.getElementById('pass2').value) {
           document.getElementById('message').style.color = 'green';
           const toSend = {
@@ -321,12 +331,11 @@
       }
   }else{
           document.getElementById('message').style.color = 'red';
-          document.getElementById('message').innerHTML = 'Access not authorized ';
+          document.getElementById('message').innerHTML = 'Access not authorized '; //if get empty
 
   }
-  }
 
-
+  };
 
 
   function createCORSRequest(method, url) {
@@ -352,11 +361,11 @@
   }
   return xhr;
 }
-
-
-
-
-
-
 </script>
+
+
+
+
+
+
 </html>
